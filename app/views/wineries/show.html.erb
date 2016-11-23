@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @winery.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @winery.location %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @winery.description %>
+</p>
+
+<p>
+  <h3><strong>Wine List:</strong></h3>
+  <ul id="wine_list">
+    <% @winery.wines.each do |wine|%>
+      <li>
+        <a href="/wines/<%= wine.id %>"> <%= wine.name %> </a>
+      </li>
+    <% end %>
+  </ul>
+</p>
+
+<hr>
+
+<p>
+  <input type="text" name="wine_name" id="wine_name_field" placeholder="Wine Name"/>
+  <input type="text" name="vintage" placeholder="Vintage" id="wine_vintage_field"/>
+  <input type="text" name="description" placeholder="Description" id="wine_description_field"/>
+  <input type="hidden" name="winery_id" value="<%= @winery.id %>" id="winery_id_field"/>
+  <input type="button" value="New Wine" id="new_wine_button"/>
+</p>
+
+
+
+<%= link_to 'Edit', edit_winery_path(@winery) %> |
+<%= link_to 'Back', wineries_path %>
